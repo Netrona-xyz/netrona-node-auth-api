@@ -1,0 +1,47 @@
+@host = localhost
+@port = 5050
+
+### Register
+POST http://{{host}}:{{port}}/api/usuarios/register/
+Content-Type: application/json
+
+{
+  "nombre": "Pablo Berdasco",
+  "mail": "p.berdasco@gmail.com",
+  "password": "1234"
+}
+
+### Login OK
+POST http://{{host}}:{{port}}/api/usuarios/login/
+Content-Type: application/json
+
+{
+  "mail": "p.berdasco@gmail.com",
+  "password": "1234"
+}
+
+### Login Fail - Credentials 1
+POST http://{{host}}:{{port}}/api/usuarios/login/
+Content-Type: application/json
+
+{
+  "mail": "p.berdasco@gmail.com",
+  "password": "2222"
+}
+
+### Login Fail - Credentials 2
+POST http://{{host}}:{{port}}/api/usuarios/login/
+Content-Type: application/json
+
+{
+  "mail": "pberdasco@gmail.com",
+  "password": "1234"
+}
+
+### Login Fail - Bad Request
+POST http://{{host}}:{{port}}/api/usuarios/login/
+Content-Type: application/json
+
+{
+  "mail": "p.berdasco@gmail.com"
+}

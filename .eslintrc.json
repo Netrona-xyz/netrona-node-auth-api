@@ -1,0 +1,10 @@
+{
+  "extends": ["semistandard"],
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "rules": {
+    "indent": ["error", 4]  // 4 espacios en lugar de 2
+  }
+}

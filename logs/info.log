@@ -1,0 +1,350 @@
+2025-08-02T01:49:19.759Z [info]: Server running http://localhost:5050
+2025-08-02T01:53:03.000Z [info]: Server running http://localhost:5050
+2025-08-02T01:56:40.716Z [info]: Server running http://localhost:5050
+2025-08-02T01:57:33.048Z [warn]: 404 Not Found: GET / - IP: ::1
+2025-08-02T01:57:33.052Z [info]: Received GET for / - Status: 404 - Time: 5ms - At: 2025-08-02T01:57:33.052Z - from clientIP: ::1
+2025-08-02T01:57:33.100Z [warn]: 404 Not Found: GET /favicon.ico - IP: ::1
+2025-08-02T01:57:33.101Z [info]: Received GET for /favicon.ico - Status: 404 - Time: 2ms - At: 2025-08-02T01:57:33.101Z - from clientIP: ::1
+2025-08-02T01:59:36.444Z [info]: Server running http://localhost:5050
+2025-08-02T02:07:22.531Z [info]: Server running http://localhost:5050
+2025-08-02T02:10:05.267Z [error]: (500) Cannot read properties of undefined (reading 'toJson') null
+2025-08-02T02:10:05.267Z [error]: stack TypeError: Cannot read properties of undefined (reading 'toJson')
+    at userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:20:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-08-02T02:10:05.269Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 73ms - At: 2025-08-02T02:10:05.269Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:15:46.964Z [info]: Server running http://localhost:5050
+2025-08-02T02:15:54.441Z [error]: (500) Access denied for user 'netrona'@'%' to database 'invest-project' null
+2025-08-02T02:15:54.442Z [error]: stack Error: Access denied for user 'netrona'@'%' to database 'invest-project'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:20:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:19:29)
+2025-08-02T02:15:54.444Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 24ms - At: 2025-08-02T02:15:54.444Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:17:10.519Z [info]: Received POST for /api/usuarios/register/ - Status: 200 - Time: 23ms - At: 2025-08-02T02:17:10.518Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:31:03.530Z [info]: Server running http://localhost:5050
+2025-08-02T02:31:06.183Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 14ms - At: 2025-08-02T02:31:06.183Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:31:32.997Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 2ms - At: 2025-08-02T02:31:32.997Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:32:10.808Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 1ms - At: 2025-08-02T02:32:10.807Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:40:32.870Z [info]: Server running http://localhost:5050
+2025-08-02T02:41:27.826Z [info]: Received POST for /api/usuarios/register/ - Status: 200 - Time: 31ms - At: 2025-08-02T02:41:27.826Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:41:50.050Z [error]: (500) Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique' null
+2025-08-02T02:41:50.051Z [error]: stack Error: Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:20:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T02:41:50.052Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 19ms - At: 2025-08-02T02:41:50.052Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:42:09.727Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 4ms - At: 2025-08-02T02:42:09.727Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:42:12.299Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 2ms - At: 2025-08-02T02:42:12.299Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:42:31.173Z [error]: (500) Cannot read properties of undefined (reading 'map') null
+2025-08-02T02:42:31.174Z [error]: stack TypeError: Cannot read properties of undefined (reading 'map')
+    at UsuariosController.bodyValidations (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:60:40)
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:40:61)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+2025-08-02T02:42:31.175Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 3ms - At: 2025-08-02T02:42:31.175Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:44:13.888Z [info]: Server running http://localhost:5050
+2025-08-02T02:44:17.941Z [error]: (500) Cannot read properties of undefined (reading 'map') null
+2025-08-02T02:44:17.941Z [error]: stack TypeError: Cannot read properties of undefined (reading 'map')
+    at UsuariosController.bodyValidations (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:62:40)
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:40:61)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+2025-08-02T02:44:17.944Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 7ms - At: 2025-08-02T02:44:17.944Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:50:32.093Z [info]: Server running http://localhost:5050
+2025-08-02T02:50:37.932Z [error]: (500) ZodError is not defined null
+2025-08-02T02:50:37.933Z [error]: stack ReferenceError: ZodError is not defined
+    at UsuariosController.bodyValidations (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:61:76)
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:40:61)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+2025-08-02T02:50:37.936Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 6ms - At: 2025-08-02T02:50:37.935Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:51:31.252Z [info]: Server running http://localhost:5050
+2025-08-02T02:51:34.522Z [error]: (500) Cannot read properties of undefined (reading 'map') null
+2025-08-02T02:51:34.523Z [error]: stack TypeError: Cannot read properties of undefined (reading 'map')
+    at UsuariosController.bodyValidations (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:66:40)
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:40:61)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+2025-08-02T02:51:34.527Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 12ms - At: 2025-08-02T02:51:34.527Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:53:49.053Z [info]: Server running http://localhost:5050
+2025-08-02T02:53:53.538Z [error]: (400) Problemas con el req.body [{"field":"password","message":"Invalid input: expected string, received undefined"}]
+2025-08-02T02:53:53.539Z [error]: stack Error: Problemas con el req.body
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:41:59)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Source\js\inversiones-back\node_modules\router\index.js:186:3)
+2025-08-02T02:53:53.542Z [info]: Received POST for /api/usuarios/login/ - Status: 400 - Time: 6ms - At: 2025-08-02T02:53:53.542Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T02:57:17.639Z [info]: Server running http://localhost:5050
+2025-08-02T02:57:21.353Z [error]: (400) Problemas con el req.body [{"field":"password","message":"Invalid input: expected string, received undefined"}]
+2025-08-02T02:57:21.354Z [error]: stack Error: Problemas con el req.body
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:41:59)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Source\js\inversiones-back\node_modules\router\index.js:186:3)
+2025-08-02T02:57:21.357Z [info]: Received POST for /api/usuarios/login/ - Status: 400 - Time: 6ms - At: 2025-08-02T02:57:21.357Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:01:39.713Z [info]: Server running http://localhost:5050
+2025-08-02T03:01:43.706Z [error]: (400) Problemas con el req.body [{"field":"password","message":"Invalid input: expected string, received undefined"}]
+2025-08-02T03:01:43.707Z [error]: stack Error: Problemas con el req.body
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:41:59)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Source\js\inversiones-back\node_modules\router\index.js:186:3)
+2025-08-02T03:01:43.710Z [info]: Received POST for /api/usuarios/login/ - Status: 400 - Time: 7ms - At: 2025-08-02T03:01:43.710Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:03:28.199Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 14ms - At: 2025-08-02T03:03:28.199Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:03:30.694Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 2ms - At: 2025-08-02T03:03:30.694Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:14:00.035Z [info]: Server running http://localhost:5050
+2025-08-02T03:14:07.106Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 14ms - At: 2025-08-02T03:14:07.106Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:14:09.549Z [error]: (400) Problemas con el req.body [{"field":"password","message":"Invalid input: expected string, received undefined"}]
+2025-08-02T03:14:09.550Z [error]: stack Error: Problemas con el req.body
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:41:59)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Source\js\inversiones-back\node_modules\router\index.js:186:3)
+2025-08-02T03:14:09.552Z [info]: Received POST for /api/usuarios/login/ - Status: 400 - Time: 4ms - At: 2025-08-02T03:14:09.552Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:21:53.840Z [info]: Server running http://localhost:5050
+2025-08-02T03:22:01.218Z [error]: (400) Problemas con el req.body [{"field":"password","message":"Invalid input: expected string, received undefined"}]
+2025-08-02T03:22:01.218Z [error]: stack Error: Problemas con el req.body
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:41:59)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Source\js\inversiones-back\node_modules\router\index.js:186:3)
+2025-08-02T03:22:01.222Z [info]: Received POST for /api/usuarios/login/ - Status: 400 - Time: 5ms - At: 2025-08-02T03:22:01.221Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:22:04.118Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 13ms - At: 2025-08-02T03:22:04.118Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:24:09.264Z [info]: Server running http://localhost:5050
+2025-08-02T03:24:16.835Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 14ms - At: 2025-08-02T03:24:16.834Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:24:24.643Z [error]: (500) Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique' null
+2025-08-02T03:24:24.644Z [error]: stack Error: Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:22:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:24:24.646Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 24ms - At: 2025-08-02T03:24:24.646Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:25:45.940Z [info]: Server running http://localhost:5050
+2025-08-02T03:25:50.490Z [error]: (500) Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique' null
+2025-08-02T03:25:50.491Z [error]: stack Error: Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:22:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:25:50.493Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 30ms - At: 2025-08-02T03:25:50.493Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:27:19.928Z [info]: Server running http://localhost:5050
+2025-08-02T03:27:27.571Z [error]: (500) Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique' null
+2025-08-02T03:27:27.572Z [error]: stack Error: Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:22:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:27:27.574Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 30ms - At: 2025-08-02T03:27:27.574Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:28:45.902Z [info]: Server running http://localhost:5050
+2025-08-02T03:28:52.111Z [error]: (500) Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique' null
+2025-08-02T03:28:52.112Z [error]: stack Error: Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:26:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:22:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:28:52.114Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 31ms - At: 2025-08-02T03:28:52.114Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:31:54.289Z [info]: Server running http://localhost:5050
+2025-08-02T03:32:04.211Z [error]: (500) Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique' null
+2025-08-02T03:32:04.212Z [error]: stack Error: Duplicate entry 'p.berdasco@gmail.com' for key 'usuarios.mail_Unique'
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:26:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:22:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:32:04.214Z [info]: Received POST for /api/usuarios/register/ - Status: 500 - Time: 30ms - At: 2025-08-02T03:32:04.214Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:34:07.441Z [info]: Server running http://localhost:5050
+2025-08-02T03:34:10.068Z [error]: (409) El usuario ya existe null
+2025-08-02T03:34:10.068Z [error]: stack Error: El usuario ya existe
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:21:55)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:34:10.070Z [info]: Received POST for /api/usuarios/register/ - Status: 409 - Time: 30ms - At: 2025-08-02T03:34:10.070Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:34:18.682Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 5ms - At: 2025-08-02T03:34:18.682Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:38:01.442Z [info]: Server running http://localhost:5050
+2025-08-02T03:38:33.710Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 21ms - At: 2025-08-02T03:38:33.710Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:39:37.542Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 3ms - At: 2025-08-02T03:39:37.542Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:39:40.330Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 2ms - At: 2025-08-02T03:39:40.330Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:40:25.774Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 2ms - At: 2025-08-02T03:40:25.774Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:41:50.299Z [info]: Server running http://localhost:5050
+2025-08-02T03:42:05.224Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:42:05.225Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:48:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:42:05.227Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 18ms - At: 2025-08-02T03:42:05.227Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:44:28.358Z [info]: Server running http://localhost:5050
+2025-08-02T03:44:38.581Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:44:38.582Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:52:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:44:38.584Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 18ms - At: 2025-08-02T03:44:38.584Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:46:13.071Z [info]: Server running http://localhost:5050
+2025-08-02T03:46:18.850Z [error]: (409) El usuario ya existe null
+2025-08-02T03:46:18.851Z [error]: stack Error: El usuario ya existe
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:19:55)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T03:46:18.854Z [info]: Received POST for /api/usuarios/register/ - Status: 409 - Time: 30ms - At: 2025-08-02T03:46:18.854Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:46:23.920Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:46:23.920Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:52:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:46:23.921Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 8ms - At: 2025-08-02T03:46:23.921Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:48:10.456Z [info]: Server running http://localhost:5050
+2025-08-02T03:48:19.169Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:48:19.169Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:55:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:48:19.171Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 20ms - At: 2025-08-02T03:48:19.171Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:49:42.873Z [info]: Server running http://localhost:5050
+2025-08-02T03:49:48.538Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:49:48.538Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:55:19)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:49:48.540Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 34ms - At: 2025-08-02T03:49:48.540Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:52:28.050Z [info]: Server running http://localhost:5050
+2025-08-02T03:52:34.612Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:52:34.612Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:55:19)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:52:34.615Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 33ms - At: 2025-08-02T03:52:34.615Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T03:53:27.460Z [info]: Server running http://localhost:5050
+2025-08-02T03:53:33.395Z [error]: (500) Error interno de la base de datos null
+2025-08-02T03:53:33.395Z [error]: stack Error: Error interno de la base de datos
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:49:19)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T03:53:33.397Z [info]: Received POST for /api/usuarios/login/ - Status: 500 - Time: 30ms - At: 2025-08-02T03:53:33.397Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:10:40.435Z [info]: Server running http://localhost:5050
+2025-08-02T04:10:48.365Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 31ms - At: 2025-08-02T04:10:48.365Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:03.272Z [error]: (401) Credenciales Invalidas null
+2025-08-02T04:11:03.272Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:41:30)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T04:11:03.273Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 18ms - At: 2025-08-02T04:11:03.273Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:08.077Z [error]: (401) Credenciales Invalidas null
+2025-08-02T04:11:08.078Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:36:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T04:11:08.079Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 5ms - At: 2025-08-02T04:11:08.079Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:17.679Z [error]: (400) Problemas con el req.body [{"field":"password","message":"Invalid input: expected string, received undefined"}]
+2025-08-02T04:11:17.679Z [error]: stack Error: Problemas con el req.body
+    at throwValidationError (file:///C:/Source/js/inversiones-back/src/controllers/validations.js:33:25)
+    at userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:41:39)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+2025-08-02T04:11:17.681Z [info]: Received POST for /api/usuarios/login/ - Status: 400 - Time: 3ms - At: 2025-08-02T04:11:17.681Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:19.736Z [error]: (401) Credenciales Invalidas null
+2025-08-02T04:11:19.736Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:36:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T04:11:19.737Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 4ms - At: 2025-08-02T04:11:19.737Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:32.225Z [error]: (401) Credenciales Invalidas null
+2025-08-02T04:11:32.225Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:36:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T04:11:32.226Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 4ms - At: 2025-08-02T04:11:32.226Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:50.332Z [error]: (401) Credenciales Invalidas null
+2025-08-02T04:11:50.332Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:36:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T04:11:50.333Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 4ms - At: 2025-08-02T04:11:50.333Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:11:54.844Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 18ms - At: 2025-08-02T04:11:54.844Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:37:54.359Z [info]: Server running http://localhost:5050
+2025-08-02T04:46:50.207Z [info]: Server running http://localhost:5050
+2025-08-02T04:46:58.095Z [info]: Received GET for / - Status: 200 - Time: 22ms - At: 2025-08-02T04:46:58.095Z - from clientIP: ::1
+2025-08-02T04:46:58.148Z [info]: Received GET for /manifest.json - Status: 200 - Time: 3ms - At: 2025-08-02T04:46:58.148Z - from clientIP: ::1
+2025-08-02T04:51:19.770Z [error]: (409) El usuario ya existe null
+2025-08-02T04:51:19.770Z [error]: stack Error: El usuario ya existe
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userRegister (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:19:55)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userRegister (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:22:29)
+2025-08-02T04:51:19.772Z [info]: Received POST for /api/usuarios/register/ - Status: 409 - Time: 77ms - At: 2025-08-02T04:51:19.772Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:51:24.639Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 21ms - At: 2025-08-02T04:51:24.639Z - from clientIP: ::ffff:127.0.0.1
+2025-08-02T04:51:26.649Z [error]: (401) Credenciales Invalidas null
+2025-08-02T04:51:26.649Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:41:30)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:42:26)
+2025-08-02T04:51:26.650Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 18ms - At: 2025-08-02T04:51:26.650Z - from clientIP: ::ffff:127.0.0.1
