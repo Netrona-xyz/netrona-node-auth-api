@@ -35,12 +35,43 @@ export default class UsuariosController {
      * @returns {Response} - token: string (con id, mail, nombre) (si login ok)
      *                     - status: 401 + message (si fallo)
      */
-    static async userLogin (req, res, next) {
+    static async userLogin (req, res) {
         try {
             const [errores, loginData] = bodyValidations(req.body, usuarioLoginSchema);
             if (errores.length !== 0) throwValidationError(errores);
-            const data = await UsuariosService.userLogin(loginData.mail, loginData.password);
-            res.status(200).send(data);
+
+            const token = await UsuariosService.userLogin(loginData.mail, loginData.password);
+
+            res
+                .cookie('accessToken', token, {
+                    httpOnly: true,
+                    sameSite: 'Strict',
+                    secure: false, // ⚠️ pasar a true si es HTTPS
+                    maxAge: 1000 * 60 * 60 * 2 // 2 horas
+                })
+                .status(200)
+                .json({ ok: true });
+        } catch (error) {
+            showError(req, res, error);
+        }
+    }
+
+    static async apiTokenLogin (req, res) {
+        try {
+            const [errores, loginData] = bodyValidations(req.body, usuarioLoginSchema);
+            if (errores.length !== 0) throwValidationError(errores);
+            const token = await UsuariosService.userLogin(loginData.mail, loginData.password);
+            res.status(200).json({ token });
+        } catch (err) {
+            showError(req, res, err);
+        }
+    }
+
+    static async getMe (req, res) {
+        try {
+            const userId = req.user.id;
+            const data = await UsuariosService.getRolesYDerechos(userId);
+            res.status(200).json(data);
         } catch (error) {
             showError(req, res, error);
         }

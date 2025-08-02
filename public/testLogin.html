@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Probar login</h2>
+    <form id="loginForm">
+      <input type="email" name="mail" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <button id="btnMe" disabled>Obtener roles y derechos</button>
+    <pre id="me"></pre>
+
+    <script>
+      const form = document.getElementById("loginForm");
+      const btnMe = document.getElementById("btnMe");
+      const pre = document.getElementById("me");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = {
+          mail: form.mail.value,
+          password: form.password.value,
+        };
+
+        // Login
+        const loginRes = await fetch("http://localhost:5050/api/usuarios/login", {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (loginRes.ok) {
+          btnMe.disabled = false;
+          pre.textContent = "Login exitoso. Ahora podés obtener roles y derechos.";
+        } else {
+          btnMe.disabled = true;
+          const err = await loginRes.json();
+          pre.textContent = "Login falló: " + (err?.message || loginRes.status);
+        }
+      });
+
+      btnMe.addEventListener("click", async () => {
+        const res = await fetch("http://localhost:5050/api/usuarios/me", {
+          credentials: "include",
+        });
+
+        if (res.ok) {
+          const json = await res.json();
+          pre.textContent = "/me = \n" + JSON.stringify(json, null, 2);
+        } else {
+          const err = await res.json();
+          pre.textContent = "Error al obtener /me: " + (err?.message || res.status);
+        }
+      });
+    </script>
+  </body>
+</html>
+

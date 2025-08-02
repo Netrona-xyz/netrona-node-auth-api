@@ -46,4 +46,25 @@ export default class UsuariosService {
             throw dbErrorMsg(500, error?.sqlMessage);
         }
     }
+
+    static async getRolesYDerechos (userId) {
+        try {
+            const [rolesRows] = await pool.query(
+                'SELECT r.id, r.nombre FROM Roles r JOIN RolesUsuarios ru ON ru.rolId = r.id WHERE ru.usuarioId = ?',
+                [userId]
+            );
+
+            const [derechosRows] = await pool.query(
+                'SELECT d.id, d.nombre FROM Derechos d JOIN DerechosRoles dr ON dr.derechoId = d.id JOIN RolesUsuarios ru ON ru.rolId = dr.rolId WHERE ru.usuarioId = ?',
+                [userId]
+            );
+
+            return {
+                roles: rolesRows,
+                derechos: derechosRows
+            };
+        } catch (error) {
+            throw dbErrorMsg(500, error?.sqlMessage || 'Error al obtener roles y derechos');
+        }
+    }
 }

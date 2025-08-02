@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -8,14 +9,29 @@ import logger from './utils/logger.js';
 import { logRequest } from './middleware/logRequest.js';
 import { routers } from './routersIndex.js';
 
+process.loadEnvFile();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.json({ limit: '50mb' }));
+app.use(cookieParser());
 app.use(logRequest(logger));
-app.use(cors());
+
+// Admitir multiples origenes, definirlos en .env como lista separada por coma (,)
+const allowedOrigins = process.env.CORS_ORIGINS?.split(',') || ['http://localhost:5500'];
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin.trim())) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS bloqueado para origen: ' + origin));
+        }
+    },
+    credentials: true
+}));
 
 // Carga centralizada de routers
 routers.forEach(({ path, router }) => {
@@ -35,8 +51,6 @@ app.use((req, res) => {
     logger.warn(`404 Not Found: ${req.method} ${req.url} - IP: ${req.ip}`);
     res.status(404).json({ message: 'No existe el endpoint' });
 });
-
-process.loadEnvFile();
 
 try {
     JWT.verifyJWTSecret();

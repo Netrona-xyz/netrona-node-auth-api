@@ -11,7 +11,10 @@ Content-Type: application/json
   "password": "1234"
 }
 
+### LOGIN desde un navegador  (usa tokens en Cookies httpOnly + sameSite)
+### Nota: rest client si guarda el cookie, en general en c:\users\yo\.rest-client\cookie.json
 ### Login OK
+# @no-cookie-jar
 POST http://{{host}}:{{port}}/api/usuarios/login/
 Content-Type: application/json
 
@@ -45,3 +48,22 @@ Content-Type: application/json
 {
   "mail": "p.berdasco@gmail.com"
 }
+
+### LOGIN desde aplicaciones usa JWT para incluir en Bearer
+### Login Ok
+POST http://{{host}}:{{port}}/api/usuarios/api-token/
+Content-Type: application/json
+
+{
+  "mail": "p.berdasco@gmail.com",
+  "password": "1234"
+}
+
+### Get Roles & Derechos - con falla por falta de bearer
+GET http://{{host}}:{{port}}/api/usuarios/me
+
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiUGFibG8gQmVyZGFzY28iLCJtYWlsIjoicC5iZXJkYXNjb0BnbWFpbC5jb20iLCJpYXQiOjE3NTQxNDk5MzIsImV4cCI6MTc1NDE1NzEzMn0.BfRR_489oWgrVUSSBXAqFEFQ9L-Say74hxZN65XFdC0
+### Get Roles & Derechos - Ok : poner el token correcto
+GET http://{{host}}:{{port}}/api/usuarios/me
+Authorization: Bearer {{token}}
