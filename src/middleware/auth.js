@@ -2,12 +2,14 @@
 import JWT from './jwt_handle.js';
 
 export function authMiddleware (req, res, next) {
+    if (process.env.SKIP_AUTH === 'true') {
+        req.user = { id: 1, nombre: 'dev', mail: 'dev@fake.com' };
+        return next();
+    }
     let token = req.cookies?.accessToken;
-    console.log('token recibido: ', token);
 
     if (!token && req.headers.authorization?.startsWith('Bearer ')) {
         token = req.headers.authorization.split(' ')[1];
-        console.log('token bearer: ', token);
     }
 
     if (!token) return res.status(401).json({ message: 'Token requerido' });
