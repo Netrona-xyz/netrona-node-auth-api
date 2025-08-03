@@ -40,7 +40,11 @@ export default class UsuariosService {
             const isOk = await Usuarios.validaPassword(pass, user);
             if (!isOk) throw dbErrorMsg(401, 'Credenciales Invalidas');
 
-            return JWT.generateToken(user.toJson());
+            const accessToken = JWT.generateToken(user.toJson());
+            const refreshToken = JWT.generateRefreshToken(user.toJson());
+            await pool.query('UPDATE Usuarios SET refreshToken = ? WHERE id = ?', [refreshToken, user.id]);
+
+            return { accessToken, refreshToken };
         } catch (error) {
             if (error.status === 401) throw error;
             throw dbErrorMsg(500, error?.sqlMessage);
@@ -65,6 +69,33 @@ export default class UsuariosService {
             };
         } catch (error) {
             throw dbErrorMsg(500, error?.sqlMessage || 'Error al obtener roles y derechos');
+        }
+    }
+
+    static async regenerarAccessToken (refreshToken) {
+        try {
+            const payload = JWT.verifyRefreshToken(refreshToken);
+
+            // Validar que el token esté registrado en la base
+            const [rows] = await pool.query(
+                'SELECT id, mail, nombre FROM Usuarios WHERE id = ? AND refreshToken = ?',
+                [payload.id, refreshToken]
+            );
+
+            if (rows.length === 0) throw dbErrorMsg(403, 'Refresh token inválido o no registrado');
+
+            const user = new Usuarios(rows[0]);
+            return JWT.generateToken(user.toJson());
+        } catch (err) {
+            throw dbErrorMsg(403, 'Refresh token inválido o expirado');
+        }
+    }
+
+    static async limpiarRefreshToken (userId) {
+        try {
+            await pool.query('UPDATE Usuarios SET refreshToken = NULL WHERE id = ?', [userId]);
+        } catch (error) {
+            throw dbErrorMsg(500, 'No se pudo limpiar el refresh token');
         }
     }
 }

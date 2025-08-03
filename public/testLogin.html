@@ -9,12 +9,25 @@
     </form>
 
     <button id="btnMe" disabled>Obtener roles y derechos</button>
+    <button id="btnRefresh" disabled>Renovar token</button>
+    <button id="btnLogout" disabled>Logout</button>
     <pre id="me"></pre>
 
     <script>
       const form = document.getElementById("loginForm");
       const btnMe = document.getElementById("btnMe");
+      const btnRefresh = document.getElementById("btnRefresh");
+      const btnLogout = document.getElementById("btnLogout");
       const pre = document.getElementById("me");
+
+      function setSesionActiva(activa) {
+        btnMe.disabled = !activa;
+        btnRefresh.disabled = !activa;
+        btnLogout.disabled = !activa;
+        if (!activa) {
+          pre.textContent = "Sesión cerrada.";
+        }
+      }
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -23,7 +36,6 @@
           password: form.password.value,
         };
 
-        // Login
         const loginRes = await fetch("http://localhost:5050/api/usuarios/login", {
           method: "POST",
           credentials: "include",
@@ -34,10 +46,10 @@
         });
 
         if (loginRes.ok) {
-          btnMe.disabled = false;
+          setSesionActiva(true);
           pre.textContent = "Login exitoso. Ahora podés obtener roles y derechos.";
         } else {
-          btnMe.disabled = true;
+          setSesionActiva(false);
           const err = await loginRes.json();
           pre.textContent = "Login falló: " + (err?.message || loginRes.status);
         }
@@ -56,7 +68,38 @@
           pre.textContent = "Error al obtener /me: " + (err?.message || res.status);
         }
       });
+
+      btnRefresh.addEventListener("click", async () => {
+        const res = await fetch("http://localhost:5050/api/usuarios/refresh", {
+          method: "POST",
+          credentials: "include",
+        });
+
+        if (res.ok) {
+          pre.textContent = "Token renovado correctamente.";
+        } else {
+          const err = await res.json();
+          setSesionActiva(false);
+          pre.textContent = "Error al renovar token: " + (err?.message || res.status);
+        }
+      });
+
+      btnLogout.addEventListener("click", async () => {
+        const res = await fetch("http://localhost:5050/api/usuarios/logout", {
+          method: "POST",
+          credentials: "include",
+        });
+
+        if (res.ok) {
+          setSesionActiva(false);
+          pre.textContent = "Sesión cerrada exitosamente.";
+        } else {
+          const err = await res.json();
+          pre.textContent = "Error al cerrar sesión: " + (err?.message || res.status);
+        }
+      });
     </script>
   </body>
 </html>
+
 

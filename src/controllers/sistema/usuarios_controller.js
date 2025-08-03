@@ -40,14 +40,20 @@ export default class UsuariosController {
             const [errores, loginData] = bodyValidations(req.body, usuarioLoginSchema);
             if (errores.length !== 0) throwValidationError(errores);
 
-            const token = await UsuariosService.userLogin(loginData.mail, loginData.password);
+            const { accessToken, refreshToken } = await UsuariosService.userLogin(loginData.mail, loginData.password);
 
             res
-                .cookie('accessToken', token, {
+                .cookie('accessToken', accessToken, {
                     httpOnly: true,
                     sameSite: 'Strict',
                     secure: false, // ⚠️ pasar a true si es HTTPS
-                    maxAge: 1000 * 60 * 60 * 2 // 2 horas
+                    maxAge: 1000 * 60 * 30 // 30 minutos
+                })
+                .cookie('refreshToken', refreshToken, {
+                    httpOnly: true,
+                    sameSite: 'Strict',
+                    secure: false, // ⚠️ pasar a true si es HTTPS
+                    maxAge: 1000 * 60 * 60 * 24 * 7 // 7 días
                 })
                 .status(200)
                 .json({ ok: true });
@@ -74,6 +80,57 @@ export default class UsuariosController {
             res.status(200).json(data);
         } catch (error) {
             showError(req, res, error);
+        }
+    }
+
+    static async refreshToken (req, res) {
+        try {
+            let refreshToken = req.cookies?.refreshToken;
+
+            if (!refreshToken && req.headers.authorization?.startsWith('Bearer ')) {
+                refreshToken = req.headers.authorization.split(' ')[1];
+            }
+
+            if (!refreshToken) {
+                return res.status(401).json({ message: 'Refresh token requerido' });
+            }
+
+            const accessToken = await UsuariosService.regenerarAccessToken(refreshToken);
+
+            // Si vino por cookie, devolvemos el nuevo access token en cookie
+            if (req.cookies?.refreshToken) {
+                res
+                    .cookie('accessToken', accessToken, {
+                        httpOnly: true,
+                        sameSite: 'Strict',
+                        secure: false, // ⚠️ true si HTTPS
+                        maxAge: 1000 * 60 * 30
+                    })
+                    .status(200)
+                    .json({ ok: true });
+            } else {
+            // Si vino por Bearer, devolvemos el token como JSON
+                res.status(200).json({ accessToken });
+            }
+        } catch (error) {
+            return res.status(error.status || 403).json({ message: error.message || 'Token inválido' });
+        }
+    }
+
+    static async logout (req, res) {
+        try {
+            const userId = req.user?.id;
+            if (userId) {
+                await UsuariosService.limpiarRefreshToken(userId);
+            }
+
+            res
+                .clearCookie('accessToken')
+                .clearCookie('refreshToken')
+                .status(200)
+                .json({ ok: true });
+        } catch (error) {
+            return res.status(500).json({ message: 'Error al cerrar sesión' });
         }
     }
 }

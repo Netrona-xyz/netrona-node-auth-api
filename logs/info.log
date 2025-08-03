@@ -579,3 +579,59 @@
 2025-08-02T16:21:09.846Z [info]: Received OPTIONS for /api/usuarios/login - Status: 204 - Time: 0ms - At: 2025-08-02T16:21:09.846Z - from clientIP: ::1
 2025-08-02T16:21:09.863Z [info]: Received POST for /api/usuarios/login - Status: 200 - Time: 15ms - At: 2025-08-02T16:21:09.863Z - from clientIP: ::1
 2025-08-02T16:21:12.893Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 5ms - At: 2025-08-02T16:21:12.893Z - from clientIP: ::1
+2025-08-03T02:03:02.450Z [info]: Server running http://localhost:5050
+2025-08-03T02:04:27.323Z [info]: Received POST for /api/usuarios/api-token/ - Status: 200 - Time: 83ms - At: 2025-08-03T02:04:27.323Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:05:15.178Z [info]: Received GET for /api/usuarios/me - Status: 401 - Time: 2ms - At: 2025-08-03T02:05:15.178Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:05:23.866Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 7ms - At: 2025-08-03T02:05:23.866Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:05:41.061Z [info]: Received POST for /api/usuarios/refresh - Status: 200 - Time: 4ms - At: 2025-08-03T02:05:41.061Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:06:05.977Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 7ms - At: 2025-08-03T02:06:05.977Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:06:11.443Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 5ms - At: 2025-08-03T02:06:11.443Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:06:51.759Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 4ms - At: 2025-08-03T02:06:51.759Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:07:05.155Z [info]: Received GET for /api/usuarios/me - Status: 403 - Time: 2ms - At: 2025-08-03T02:07:05.155Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:07:11.500Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 4ms - At: 2025-08-03T02:07:11.500Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:27:56.874Z [error]: (401) Credenciales Invalidas null
+2025-08-03T02:27:56.875Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:41:30)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:43:51)
+2025-08-03T02:27:56.876Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 16ms - At: 2025-08-03T02:27:56.876Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:28:05.191Z [error]: (401) Credenciales Invalidas null
+2025-08-03T02:28:05.191Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:36:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:43:51)
+2025-08-03T02:28:05.192Z [info]: Received POST for /api/usuarios/login/ - Status: 401 - Time: 3ms - At: 2025-08-03T02:28:05.192Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:29:14.785Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 5ms - At: 2025-08-03T02:29:14.785Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:30:06.643Z [info]: Received POST for /api/usuarios/logout - Status: 200 - Time: 7ms - At: 2025-08-03T02:30:06.643Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:30:13.678Z [info]: Received POST for /api/usuarios/refresh - Status: 403 - Time: 3ms - At: 2025-08-03T02:30:13.678Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:30:25.170Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 4ms - At: 2025-08-03T02:30:25.170Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:30:27.162Z [info]: Received POST for /api/usuarios/refresh - Status: 403 - Time: 2ms - At: 2025-08-03T02:30:27.162Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:30:29.017Z [info]: Received POST for /api/usuarios/logout - Status: 200 - Time: 3ms - At: 2025-08-03T02:30:29.017Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:30:31.679Z [info]: Received POST for /api/usuarios/logout - Status: 200 - Time: 3ms - At: 2025-08-03T02:30:31.679Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:32:51.640Z [info]: Received POST for /api/usuarios/refresh - Status: 403 - Time: 2ms - At: 2025-08-03T02:32:51.640Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:38:13.980Z [info]: Received OPTIONS for /api/usuarios/login - Status: 500 - Time: 2ms - At: 2025-08-03T02:38:13.980Z - from clientIP: ::1
+2025-08-03T02:39:08.057Z [info]: Received OPTIONS for /api/usuarios/login - Status: 204 - Time: 0ms - At: 2025-08-03T02:39:08.056Z - from clientIP: ::1
+2025-08-03T02:39:08.072Z [error]: (401) Credenciales Invalidas null
+2025-08-03T02:39:08.073Z [error]: stack Error: Credenciales Invalidas
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at UsuariosService.userLogin (file:///C:/Source/js/inversiones-back/src/services/sistema/usuarios_service.js:41:30)
+    at async userLogin (file:///C:/Source/js/inversiones-back/src/controllers/sistema/usuarios_controller.js:43:51)
+2025-08-03T02:39:08.074Z [info]: Received POST for /api/usuarios/login - Status: 401 - Time: 16ms - At: 2025-08-03T02:39:08.074Z - from clientIP: ::1
+2025-08-03T02:39:15.383Z [info]: Received OPTIONS for /api/usuarios/login - Status: 204 - Time: 1ms - At: 2025-08-03T02:39:15.383Z - from clientIP: ::1
+2025-08-03T02:39:15.406Z [info]: Received POST for /api/usuarios/login - Status: 200 - Time: 21ms - At: 2025-08-03T02:39:15.406Z - from clientIP: ::1
+2025-08-03T02:39:18.696Z [info]: Received GET for /api/usuarios/me - Status: 304 - Time: 5ms - At: 2025-08-03T02:39:18.696Z - from clientIP: ::1
+2025-08-03T02:39:22.633Z [info]: Received POST for /api/usuarios/refresh - Status: 200 - Time: 5ms - At: 2025-08-03T02:39:22.633Z - from clientIP: ::1
+2025-08-03T02:39:25.490Z [info]: Received GET for /api/usuarios/me - Status: 304 - Time: 6ms - At: 2025-08-03T02:39:25.490Z - from clientIP: ::1
+2025-08-03T02:39:27.228Z [info]: Received POST for /api/usuarios/logout - Status: 200 - Time: 8ms - At: 2025-08-03T02:39:27.228Z - from clientIP: ::1
+2025-08-03T02:42:20.488Z [info]: Received POST for /api/usuarios/logout - Status: 401 - Time: 1ms - At: 2025-08-03T02:42:20.488Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:42:33.902Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 20ms - At: 2025-08-03T02:42:33.902Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:43:21.456Z [info]: Received GET for /api/usuarios/me - Status: 401 - Time: 1ms - At: 2025-08-03T02:43:21.456Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:43:29.471Z [info]: Received POST for /api/usuarios/logout - Status: 401 - Time: 0ms - At: 2025-08-03T02:43:29.471Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:44:04.088Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 22ms - At: 2025-08-03T02:44:04.088Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:44:34.491Z [info]: Received GET for /api/usuarios/me - Status: 401 - Time: 1ms - At: 2025-08-03T02:44:34.491Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:44:36.666Z [info]: Received POST for /api/usuarios/logout - Status: 401 - Time: 1ms - At: 2025-08-03T02:44:36.666Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:44:54.122Z [info]: Received POST for /api/usuarios/login/ - Status: 200 - Time: 23ms - At: 2025-08-03T02:44:54.122Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:45:02.362Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 5ms - At: 2025-08-03T02:45:02.362Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:45:05.537Z [info]: Received POST for /api/usuarios/logout - Status: 200 - Time: 8ms - At: 2025-08-03T02:45:05.537Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T02:45:10.498Z [info]: Received GET for /api/usuarios/me - Status: 401 - Time: 1ms - At: 2025-08-03T02:45:10.498Z - from clientIP: ::ffff:127.0.0.1

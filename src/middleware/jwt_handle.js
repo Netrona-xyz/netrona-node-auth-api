@@ -26,4 +26,12 @@ export default class JWT {
             throw new Error('JWT_SECRET inválido o demasiado corto. Debe tener al menos 32 caracteres.');
         }
     }
+
+    static generateRefreshToken (user) {
+        return jwt.sign(user, JWT_SECRET, { expiresIn: '7d' }); // o más tiempo si preferís
+    }
+
+    static verifyRefreshToken (token) {
+        return jwt.verify(token, JWT_SECRET); // Podés usar otra clave si querés separarlos
+    }
 }
