@@ -32,7 +32,7 @@ PUT http://{{host}}:{{port}}/api/instrumentos/1
 Content-Type: application/json
 
 {
-  "notas": "Nueva nota 1"
+  "notas": "Nueva nota 2"
 }
 
 
@@ -44,8 +44,8 @@ Content-Type: application/json
 {
   "tipoInstrumentoId": 1,
   "emisorId": 2,
-  "ticker": "YMCIO",
-  "notas": "Contrato xxxx"
+  "ticker": "YMCXO",
+  "notas": "Contrato yyyy"
 }
 
 ### Create
@@ -66,4 +66,4 @@ DELETE http://{{host}}:{{port}}/api/instrumentos/45
 
 ### Delete
 ### ? Borrar un instrumento
-DELETE http://{{host}}:{{port}}/api/instrumento/3
+DELETE http://{{host}}:{{port}}/api/instrumentos/2
