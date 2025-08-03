@@ -3,7 +3,6 @@ import UsuariosService from '../../services/sistema/usuarios_service.js';
 import { usuarioRegisterSchema, usuarioLoginSchema, usuarioPasswordChangeSchema } from '../../schemas/sistema/usuarios_schema.js';
 import { bodyValidations, throwValidationError } from '../validations.js';
 
-// TODO: agregar validador de datos (zod)
 export default class UsuariosController {
     /**
      * Utiliza a UsuariosService para grabar un nuevo usuario
@@ -134,7 +133,7 @@ export default class UsuariosController {
         }
     }
 
-    static async cambiarPassword (req, res) {
+    static async changePassword (req, res) {
         try {
             const [errores, datos] = bodyValidations(req.body, usuarioPasswordChangeSchema);
             if (errores.length !== 0) throwValidationError(errores);

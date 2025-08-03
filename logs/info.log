@@ -635,3 +635,37 @@
 2025-08-03T02:45:02.362Z [info]: Received GET for /api/usuarios/me - Status: 200 - Time: 5ms - At: 2025-08-03T02:45:02.362Z - from clientIP: ::ffff:127.0.0.1
 2025-08-03T02:45:05.537Z [info]: Received POST for /api/usuarios/logout - Status: 200 - Time: 8ms - At: 2025-08-03T02:45:05.537Z - from clientIP: ::ffff:127.0.0.1
 2025-08-03T02:45:10.498Z [info]: Received GET for /api/usuarios/me - Status: 401 - Time: 1ms - At: 2025-08-03T02:45:10.498Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:45:37.009Z [info]: Received GET for /api/instrumentos/ - Status: 200 - Time: 23ms - At: 2025-08-03T19:45:37.009Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:55:46.961Z [info]: Server running http://localhost:5050
+2025-08-03T19:56:28.600Z [info]: Received GET for /api/instrumentos/ - Status: 200 - Time: 178ms - At: 2025-08-03T19:56:28.600Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:56:41.108Z [info]: Received POST for /api/instrumentos/ - Status: 200 - Time: 8ms - At: 2025-08-03T19:56:41.108Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:57:22.171Z [info]: Received POST for /api/instrumentos/ - Status: 200 - Time: 8ms - At: 2025-08-03T19:57:22.171Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:57:29.755Z [info]: Received GET for /api/instrumentos/ - Status: 200 - Time: 3ms - At: 2025-08-03T19:57:29.755Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:58:54.862Z [info]: Received POST for /api/instrumentos/ - Status: 200 - Time: 5ms - At: 2025-08-03T19:58:54.862Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:59:03.461Z [error]: (400) Problemas con el req.body [{"field":"ticker","message":"Invalid input: expected string, received undefined"}]
+2025-08-03T19:59:03.462Z [error]: stack Error: Problemas con el req.body
+    at throwValidationError (file:///C:/Source/js/inversiones-back/src/controllers/validations.js:33:25)
+    at create (file:///C:/Source/js/inversiones-back/src/controllers/maestros/instrumentos_controller.js:37:39)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Source\js\inversiones-back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Source\js\inversiones-back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Source\js\inversiones-back\node_modules\router\lib\layer.js:152:17)
+    at C:\Source\js\inversiones-back\node_modules\router\index.js:295:15
+    at processParams (C:\Source\js\inversiones-back\node_modules\router\index.js:582:12)
+    at next (C:\Source\js\inversiones-back\node_modules\router\index.js:291:5)
+2025-08-03T19:59:03.463Z [info]: Received POST for /api/instrumentos/ - Status: 400 - Time: 3ms - At: 2025-08-03T19:59:03.463Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:59:20.882Z [error]: (404) El instrumento no existe null
+2025-08-03T19:59:20.883Z [error]: stack Error: El instrumento no existe
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at InstrumentosService.delete (file:///C:/Source/js/inversiones-back/src/services/maestros/instrumentos_service.js:99:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async delete (file:///C:/Source/js/inversiones-back/src/controllers/maestros/instrumentos_controller.js:64:13)
+2025-08-03T19:59:20.884Z [info]: Received DELETE for /api/instrumentos/45 - Status: 404 - Time: 4ms - At: 2025-08-03T19:59:20.884Z - from clientIP: ::ffff:127.0.0.1
+2025-08-03T19:59:32.323Z [error]: (404) El instrumento no existe null
+2025-08-03T19:59:32.323Z [error]: stack Error: El instrumento no existe
+    at dbErrorMsg (file:///C:/Source/js/inversiones-back/src/database/db.js:24:19)
+    at InstrumentosService.update (file:///C:/Source/js/inversiones-back/src/services/maestros/instrumentos_service.js:84:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async update (file:///C:/Source/js/inversiones-back/src/controllers/maestros/instrumentos_controller.js:52:41)
+2025-08-03T19:59:32.324Z [info]: Received PUT for /api/instrumentos/45 - Status: 404 - Time: 4ms - At: 2025-08-03T19:59:32.324Z - from clientIP: ::ffff:127.0.0.1

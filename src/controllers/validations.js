@@ -35,3 +35,15 @@ export function throwValidationError (fields = []) {
         fields
     });
 }
+
+/**
+ * Lanza un error estándar de validación de req.params con status 400 y el mensaje
+ * @param {string} message
+ * @param {Array} fields
+ */
+export function throwParamsError (message) {
+    throw Object.assign(new Error(message), {
+        status: 400,
+        fields: []
+    });
+}

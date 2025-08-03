@@ -1,0 +1,69 @@
+@host = localhost
+@port = 5050
+### Instrumentos/ 
+#* allowedFields = [id, tipoInstrumentoId, tipoInstrumento, claseInstrumento, emisorId, emisor, ticker, notas];
+
+### GET 
+### ? Todos los Instrumentos
+GET http://{{host}}:{{port}}/api/instrumentos/
+
+### ? Instrumentos de una clase
+# Formato interno: ["claseInstrumento","=","b1"]
+GET http://{{host}}:{{port}}/api/instrumentos?$filter=[%22claseInstrumento%22%2C%22%3D%22%2C%22b1%22]
+
+
+### ? Get por ID
+GET http://{{host}}:{{port}}/api/instrumentos/1
+
+### Updates
+### ? Actualizar un Instrumento que no existe
+PUT http://{{host}}:{{port}}/api/instrumentos/45
+Content-Type: application/json
+
+{
+  "tipoInstrumentoId": 2,
+  "emisorId": 1,
+  "ticker": "GD35",
+  "notas": "Este instrumento no existe"
+}
+
+### ? Actualizar un Instrumento que no existe
+PUT http://{{host}}:{{port}}/api/instrumentos/1
+Content-Type: application/json
+
+{
+  "notas": "Nueva nota 1"
+}
+
+
+### Create
+### ? Crear un Instrumento
+POST http://{{host}}:{{port}}/api/instrumentos/
+Content-Type: application/json
+
+{
+  "tipoInstrumentoId": 1,
+  "emisorId": 2,
+  "ticker": "YMCIO",
+  "notas": "Contrato xxxx"
+}
+
+### Create
+### ? Crear un Instrumento - Fail (body)
+POST http://{{host}}:{{port}}/api/instrumentos/
+Content-Type: application/json
+
+{
+  "tipoInstrumentoId": 3,
+  "emisorId": 2,
+  "tickr": "MXI33",
+  "notas": "Nuevo Instrumento"
+}
+
+### Delete
+### ? Borrar un Instrumento que no existe
+DELETE http://{{host}}:{{port}}/api/instrumentos/45
+
+### Delete
+### ? Borrar un instrumento
+DELETE http://{{host}}:{{port}}/api/instrumento/3
