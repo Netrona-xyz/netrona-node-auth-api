@@ -27,7 +27,7 @@ Content-Type: application/json
   "notas": "Este instrumento no existe"
 }
 
-### ? Actualizar un Instrumento que no existe
+### ? Actualizar un Instrumento
 PUT http://{{host}}:{{port}}/api/instrumentos/1
 Content-Type: application/json
 
