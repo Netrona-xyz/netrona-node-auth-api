@@ -98,4 +98,17 @@ export default class UsuariosService {
             throw dbErrorMsg(500, 'No se pudo limpiar el refresh token');
         }
     }
+
+    static async cambiarPassword (userId, actual, nueva) {
+        const [rows] = await pool.query('SELECT id, mail, nombre, password FROM Usuarios WHERE id = ?', [userId]);
+        if (rows.length === 0) throw dbErrorMsg(404, 'Usuario no encontrado');
+
+        const usuario = new Usuarios(rows[0]);
+
+        const ok = await Usuarios.validaPassword(actual, usuario);
+        if (!ok) throw dbErrorMsg(401, 'Contraseña actual incorrecta');
+
+        const nuevaHash = await Usuarios.hashPassword(nueva);
+        await pool.query('UPDATE Usuarios SET password = ? WHERE id = ?', [nuevaHash, userId]);
+    }
 }

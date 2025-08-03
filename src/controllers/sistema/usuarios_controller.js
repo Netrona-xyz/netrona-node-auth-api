@@ -1,6 +1,6 @@
 import { showError } from '../../middleware/controllerErrors.js';
 import UsuariosService from '../../services/sistema/usuarios_service.js';
-import { usuarioRegisterSchema, usuarioLoginSchema } from '../../schemas/sistema/usuarios_schema.js';
+import { usuarioRegisterSchema, usuarioLoginSchema, usuarioPasswordChangeSchema } from '../../schemas/sistema/usuarios_schema.js';
 import { bodyValidations, throwValidationError } from '../validations.js';
 
 // TODO: agregar validador de datos (zod)
@@ -131,6 +131,19 @@ export default class UsuariosController {
                 .json({ ok: true });
         } catch (error) {
             return res.status(500).json({ message: 'Error al cerrar sesión' });
+        }
+    }
+
+    static async cambiarPassword (req, res) {
+        try {
+            const [errores, datos] = bodyValidations(req.body, usuarioPasswordChangeSchema);
+            if (errores.length !== 0) throwValidationError(errores);
+
+            await UsuariosService.cambiarPassword(req.user.id, datos.actual, datos.nueva);
+
+            res.status(200).json({ ok: true, message: 'Contraseña actualizada' });
+        } catch (error) {
+            showError(req, res, error);
         }
     }
 }
