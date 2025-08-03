@@ -59,7 +59,7 @@ export default class UsuariosService {
             );
 
             const [derechosRows] = await pool.query(
-                'SELECT d.id, d.nombre FROM Derechos d JOIN DerechosRoles dr ON dr.derechoId = d.id JOIN RolesUsuarios ru ON ru.rolId = dr.rolId WHERE ru.usuarioId = ?',
+                'SELECT d.id, d.nombre, d.clave, d.parentId, d.esTitulo, d.orden FROM Derechos d JOIN DerechosRoles dr ON dr.derechoId = d.id JOIN RolesUsuarios ru ON ru.rolId = dr.rolId WHERE ru.usuarioId = ?',
                 [userId]
             );
 
