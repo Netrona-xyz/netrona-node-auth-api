@@ -1,0 +1,12 @@
+{
+  "grupo": "maestros",
+  "entidad": "TipoInstrumento",
+  "tabla": "TiposInstrumentos",
+  "alias": "t",
+  "plural": "TiposInstrumentos",
+  "campos": [
+    "id:int:pk",
+    "nombre:string",
+    "clase:string"
+  ]
+}

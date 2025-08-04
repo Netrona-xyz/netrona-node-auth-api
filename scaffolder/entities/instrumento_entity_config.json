@@ -1,0 +1,43 @@
+{
+  "grupo": "maestros",
+  "entidad": "Instrumento",
+  "tabla": "Instrumentos",
+  "alias": "i",
+  "plural": "instrumentos",
+  "campos": [
+    "id:int:pk",
+    "tipoInstrumentoId:decimal(10,2):fk",
+    "emisorId:int(+):fk:opt",
+    "ticker:date",
+    "notas:string(10)",
+    "tipoInstrumento:string(50):join",
+    "claseInstrumento:string(50):join",
+    "emisor:string(25):join"
+  ],
+  "joins": [
+    {
+      "alias": "t",
+      "on": "i.tipoInstrumentoId = t.id",
+      "tabla": "TiposInstrumentos",
+      "select": [
+        "t.nombre as tipoInstrumento",
+        "t.clase as claseInstrumento"
+      ]
+    },
+    {
+      "alias": "e",
+      "on": "i.emisorId = e.id",
+      "tabla": "Emisores",
+      "select": [
+        "e.nombre as emisor"
+      ]
+    }
+  ],
+  "derechos": {
+    "getAll": null,
+    "getById": null,
+    "create": "instrumentos.crear",
+    "update": "instrumentos.modificar",
+    "delete": "instrumentos.borrar"
+  }
+}
