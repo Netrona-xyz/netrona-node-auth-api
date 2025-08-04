@@ -3,7 +3,7 @@
   "entidad": "Instrumento",
   "tabla": "Instrumentos",
   "alias": "i",
-  "plural": "instrumentos",
+  "plural": "Instrumentos",
   "campos": [
     "id:int:pk",
     "tipoInstrumentoId:decimal(10,2):fk",

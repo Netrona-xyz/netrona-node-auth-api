@@ -1,104 +1,114 @@
-Claro que sí. Aquí tienes una propuesta de `README.md` completa y clara, generada a partir del análisis de tu código. Este archivo está diseñado para ser el acompañante perfecto de tu plantilla.
+# Backend Boilerplate: Express + Auth + CRUD + Scaffolder
+
+Este repositorio es una plantilla base para construir backends modernos en Node.js con Express. Incluye autenticación JWT segura, estructura limpia para CRUDs, validaciones con Zod y un sistema de scaffolding para generar automáticamente controladores, servicios, esquemas, modelos y rutas.
 
 ---
 
-# Backend Boilerplate: Node.js, Express & JWT
+## ✨ Características principales
 
-Este repositorio sirve como una plantilla de inicio (boilerplate) robusta y segura para construir aplicaciones backend utilizando Node.js y Express. Incluye una implementación completa y segura de autenticación basada en JSON Web Tokens (JWT), siguiendo las mejores prácticas de la industria.
+- ✅ Arquitectura modular: controllers, services, schemas, models y routers separados.
+- 🔐 Autenticación JWT doble: cookie `HttpOnly` para navegadores y Bearer token para API externa.
+- 👤 Sistema de usuarios con registro, login, refresh, logout y cambio de contraseña.
+- 🧱 Middleware de autorización basado en roles y derechos (`requiereDerecho`).
+- 🧪 Validaciones Zod y esquema de fechas custom con `dateSchema`.
+- ⚒️ Sistema de scaffolding para generar entidades CRUD completas.
+- 🧩 CRUD de ejemplo para `Instrumentos` (maestro).
+- 📁 Proyecto listo para convertirse en plantilla de GitHub.
 
-## ✨ Características Principales
+---
 
-- **Arquitectura Limpia y Escalable:** Estructura de proyecto en capas (Routers, Controladores, Servicios y Modelos) que facilita la mantenibilidad y el crecimiento de la aplicación.
-- **Autenticación Segura con JWT:** Implementación completa del flujo de `login`, `logout` y `refresh token`.
-  - **Tokens de Acceso (Access Token):** De corta duración (2 horas) para acceder a los recursos protegidos.
-  - **Tokens de Refresco (Refresh Token):** De larga duración (7 días) para generar nuevos tokens de acceso sin necesidad de volver a iniciar sesión.
-- **Doble Mecanismo de Autenticación:**
-  1.  **Cookies `HttpOnly`:** Ideal y seguro para clientes web (navegadores). Las cookies se configuran con los flags `HttpOnly`, `SameSite=Strict` y `Secure` (en producción) para mitigar ataques XSS y CSRF.
-  2.  **Bearer Token:** Permite la autenticación a través del encabezado `Authorization: Bearer <token>`, estándar para ser consumido por aplicaciones móviles, clientes de escritorio u otros servicios.
-- **Seguridad Reforzada:**
-  - **Hashing de Contraseñas:** Las contraseñas se hashean utilizando `bcrypt` antes de ser almacenadas en la base de datos.
-  - **Invalidación de Sesión en el Servidor:** Al hacer logout, el `refreshToken` se invalida en la base de datos, lo que previene su reutilización incluso si fue robado.
-  - **Validación de Entradas:** Uso de **Zod** para validar y sanitizar los datos de entrada (`req.body`), previniendo datos malformados o maliciosos.
-  - **Política de CORS Configurable:** Permite definir fácilmente los orígenes permitidos a través de variables de entorno.
+## 📦 Dependencias principales
 
-## 🛠️ Stack Tecnológico
+- express
+- jsonwebtoken
+- bcrypt
+- cookie-parser
+- mysql2
+- zod
+- winston
 
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Autenticación:** JSONWebToken (`jsonwebtoken`)
-- **Seguridad:** `bcrypt` (para hashing), `cookie-parser`
-- **Validación:** Zod
-- **Base de Datos:** `mysql2` (diseñado para MySQL/MariaDB)
-- **Otros:** `cors`, `dotenv`
+## 🧱 Estructura del proyecto
 
-## 🚀 Cómo Empezar
-
-Sigue estos pasos para poner en marcha una nueva instancia de este proyecto.
-
-### Prerrequisitos
-
-- Node.js (se recomienda v18+ para el script `dev` con `--watch`)
-- npm o un gestor de paquetes compatible
-- Una instancia de base de datos MySQL o MariaDB en ejecución.
-
-### Instalación
-
-1.  **Crear el proyecto desde la plantilla:**
-    Haz clic en el botón **"Use this template"** en la parte superior de este repositorio para crear tu propio repositorio nuevo con esta estructura.
-
-2.  **Clonar tu nuevo repositorio:**
-
-    ```bash
-    git clone https://github.com/tu-usuario/tu-nuevo-repositorio.git
-    cd tu-nuevo-repositorio
-    ```
-
-3.  **Instalar dependencias:**
-
-    ```bash
-    npm install
-    ```
-
-4.  **Configurar las variables de entorno:**
-    Copia el archivo de ejemplo `.env.example` a un nuevo archivo llamado `.env`.
-
-    ```bash
-    cp .env.example .env
-    ```
-
-    Luego, abre el archivo `.env` y edita las variables para que coincidan con tu configuración local.
-
-## ⚙️ Configuración
-
-El archivo `.env` es crucial para la configuración de la aplicación.
-
-```env
-# Configuración del Servidor
-PORT=5000
-CORS_ORIGINS=http://localhost:5500,http://127.0.0.1:5500
-
-# Configuración de la Base de Datos
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_contraseña_de_bd
-DB_DATABASE=nombre_de_tu_bd
-DB_PORT=3306
-
-# Secretos para JWT (IMPORTANTE: Usar valores largos, aleatorios y seguros)
-JWT_SECRET=un-secreto-muy-largo-y-dificil-para-access-tokens
-JWT_REFRESH_SECRET=otro-secreto-diferente-y-seguro-para-refresh-tokens
+```
+controllers/
+services/
+models/
+schemas/
+routers/
+middleware/
+scaffold/         <-- generador de CRUDs
+output/           <-- archivos generados
 ```
 
-**Importante:** La aplicación verifica al iniciar que `JWT_SECRET` exista y tenga una longitud mínima de 32 caracteres para garantizar la seguridad.
+---
 
-## 📜 Scripts Disponibles
+## ⚙️ Scaffolding
 
-Puedes ejecutar los siguientes scripts desde la raíz del proyecto:
+Podés definir una entidad en JSON con esta forma:
 
-- **`npm run dev`**: Inicia el servidor en modo de desarrollo con recarga automática (`node --watch`).
-- **`npm start`**: Inicia el servidor para producción (`node src/server.js`).
+```json
+{
+  "grupo": "maestros",
+  "entidad": "Instrumento",
+  "tabla": "Instrumentos",
+  "alias": "i",
+  "plural": "instrumentos",
+  "campos": [
+    "id:int:pk",
+    "tipoInstrumentoId:decimal(10,2):fk",
+    "emisorId:int(+):fk:opt",
+    "ticker:date",
+    "notas:string(255)",
+    "tipoInstrumento:string(50):join",
+    "claseInstrumento:string(50):join",
+    "emisor:string(25):join"
+  ],
+  "joins": [
+    {
+      "alias": "t",
+      "on": "i.tipoInstrumentoId = t.id",
+      "tabla": "TiposInstrumentos",
+      "select": ["t.nombre as tipoInstrumento", "t.clase as claseInstrumento"]
+    },
+    {
+      "alias": "e",
+      "on": "i.emisorId = e.id",
+      "tabla": "Emisores",
+      "select": ["e.nombre as emisor"]
+    }
+  ],
+  "derechos": {
+    "getAll": null,
+    "getById": null,
+    "create": "instrumentos.crear",
+    "update": "instrumentos.modificar",
+    "delete": "instrumentos.borrar"
+  }
+}
+```
 
-## Endpoints de la API
+Desde ahí se genera:
+
+- `instrumentos_controller.js`
+- `Instrumentos_service.js`
+- `instrumentos_model.js`
+- `instrumentos_schema.js`
+- `instrumentos_router.js`
+
+Con uso correcto de nombres, joins, Zod y validaciones.
+
+---
+
+## 🛡️ Seguridad y autenticación
+
+Incluye autenticación con:
+
+- Login por JWT (`/login`, `/api-token`)
+- Cookies `HttpOnly` con `SameSite` y `Secure`
+- Refresh Token persistente
+- Logout seguro y expiración forzada de tokens
+
+### Endpoints de la API
 
 La plantilla incluye un módulo de `usuarios` completamente funcional con los siguientes endpoints, todos bajo el prefijo `/api/usuarios`.
 
@@ -112,3 +122,19 @@ La plantilla incluye un módulo de `usuarios` completamente funcional con los si
 | `POST` | `/logout`    | Cierra la sesión del usuario. Limpia las cookies y anula el `refreshToken` en la base de datos.                      | **Sí**    |
 
 Las rutas protegidas utilizan el middleware `authMiddleware`, que verifica la validez del `accessToken` enviado.
+
+---
+
+## 🚀 Comenzar
+
+1. Cloná el repo y corré `npm install`.
+2. Configurá tu `.env` con credenciales de DB y secretos JWT.
+3. Probá el login con `/api/usuarios/login` o `/api-token`.
+
+---
+
+## ✍️ Autor
+
+[Pablo Berdasco](https://github.com/pberdasco)
+
+---

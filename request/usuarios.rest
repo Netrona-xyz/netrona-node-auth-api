@@ -7,8 +7,8 @@ POST http://{{host}}:{{port}}/api/usuarios/register/
 Content-Type: application/json
 
 {
-  "nombre": "Pablo Berdasco",
-  "mail": "p.berdasco@gmail.com",
+  "nombre": "Enzo Puma",
+  "mail": "epuma@netrona.xyz",
   "password": "1234"
 }
 
@@ -61,8 +61,8 @@ POST http://{{host}}:{{port}}/api/usuarios/logout
 ###? ==================================================================
 ###? LOGIN desde aplicaciones usa JWT para incluir en Bearer
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiUGFibG8gQmVyZGFzY28iLCJtYWlsIjoicC5iZXJkYXNjb0BnbWFpbC5jb20iLCJpYXQiOjE3NTQxODY3NDEsImV4cCI6MTc1NDE5Mzk0MX0.u4v_2HTjj464XHTtDDA4e608BLCyBCTyZoKc3cFVHlQ
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiUGFibG8gQmVyZGFzY28iLCJtYWlsIjoicC5iZXJkYXNjb0BnbWFpbC5jb20iLCJpYXQiOjE3NTQxODY2NjcsImV4cCI6MTc1NDc5MTQ2N30.bZp_yh_qLoBpBpX_hz1pSw-cJYSCoT4d2xYB_TWnOws
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiUGFibG8gQmVyZGFzY28iLCJtYWlsIjoicC5iZXJkYXNjb0BnbWFpbC5jb20iLCJpYXQiOjE3NTQzMTU5NTksImV4cCI6MTc1NDMyMzE1OX0.6YlzEEtTTvY6eSrLeudQxthkb_Jh1dEW58iZ9d-Md_M
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiUGFibG8gQmVyZGFzY28iLCJtYWlsIjoicC5iZXJkYXNjb0BnbWFpbC5jb20iLCJpYXQiOjE3NTQzMTU4OTUsImV4cCI6MTc1NDkyMDY5NX0.czH-HjvVtTuHmwm7ANQUsaXa45r_Vi0s5w5ptaqLt1c
 
 ### Login Ok
 POST http://{{host}}:{{port}}/api/usuarios/api-token/
