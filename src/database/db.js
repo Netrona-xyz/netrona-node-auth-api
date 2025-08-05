@@ -12,7 +12,6 @@ export const pool = createPool({
     // decimalNumbers: true    // Esto haria que todos los decimal lleguen como numeros y no como strings. Cambiarlo obliga a revisar todo...
 });
 
-// todo: deberia usar logger para dejar registro de errores?
 /**
  * Genera un error con throw a partir de un error programatico
  * Por ejemplo un 401, Credenciales invalidas por password invalida lo convierte en

@@ -1,0 +1,31 @@
+# Puerto en el que el servidor escuchará
+PORT=5050
+
+# CORS: al usar credentials:true (cookies), se deben especificar los orígenes permitidos.
+# Podés definir múltiples separados por coma (sin espacios).
+# Ejemplos: entorno dev y producción, apps distintas, etc.
+CORS_ORIGINS=http://localhost:5173,https://admin.miempresa.com
+
+# JWT
+# Usar al menos 64 caracteres aleatorios. Evitar contraseñas predecibles.
+JWT_SECRET=poné_un_valor_largo_y_seguro_de_64_caracteres_aquí
+
+# Conexión a la base de datos MySQL
+DB_HOST=127.0.0.1
+DB_USER=usuario
+DB_PASSWORD=password
+DB_DATABASE=database
+DB_PORT=3306
+
+# Logging
+ERRORS_TO_CONSOLE=true
+INFO_TO_CONSOLE=true
+DEBUG_TO_CONSOLE=true
+LOGGER_MIN_LEVEL=debug
+
+# Autenticación
+# Si SKIP_AUTH=true, se omite la validación de token (útil en desarrollo)
+SKIP_AUTH=true
+
+# Si USE_AUTHORIZATION=false, se omite el chequeo de roles/permisos
+USE_AUTHORIZATION=true

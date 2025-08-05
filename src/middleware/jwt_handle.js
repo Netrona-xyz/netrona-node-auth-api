@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 process.loadEnvFile();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// todo: Manejar esquema de refreshToken (ojo eso impacta bastante en el front tambien)
 export default class JWT {
     /**
      * Genera un token JWT incluyendo datos del usuario en su payload
