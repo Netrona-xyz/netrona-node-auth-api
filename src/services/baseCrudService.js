@@ -55,9 +55,17 @@ export async function getByIdWithJoins ({ id, selectBase, fromClause, Model, not
  * @param {Object} params.record - Objeto con los datos a insertar.
  * @param {Function} params.Model - Clase modelo para devolver el objeto creado.
  * @param {string} params.conflictMsg - Mensaje de error si hay clave duplicada.
+ * @param {boolean} [params.tracking=false] - Si se debe agregar automáticamente createUserId, lastUpdateUserId, createdAt y updatedAt.
+ * @param {number|null} [params.userId=null] - ID del usuario autenticado para completar los campos de auditoría.
  * @returns {Promise<any>} Instancia del modelo con los datos insertados (incluye ID).
  */
-export async function createRecord ({ table, record, Model, conflictMsg }) {
+export async function createRecord ({ table, record, Model, conflictMsg, tracking = false, userId = null }) {
+    if (tracking && userId) {
+        record.createUserId = userId;
+        record.lastUpdateUserId = userId;
+        record.createdAt = new Date();
+        record.updatedAt = new Date();
+    }
     try {
         const [rows] = await pool.query(`INSERT INTO ${table} SET ?`, [record]);
         record.id = rows.insertId;
@@ -77,9 +85,15 @@ export async function createRecord ({ table, record, Model, conflictMsg }) {
  * @param {Object} params.record - Datos nuevos del registro.
  * @param {Function} params.getByIdFn - Función para obtener el registro actualizado.
  * @param {string} params.notFoundMsg - Mensaje de error si no existe el registro.
+ * @param {boolean} [params.tracking=false] - Si se debe agregar automáticamente lastUpdateUserId, updatedAt.
+ * @param {number|null} [params.userId=null] - ID del usuario autenticado para completar los campos de auditoría.
  * @returns {Promise<any>} Registro actualizado (instancia del modelo).
  */
-export async function updateRecord ({ table, id, record, getByIdFn, notFoundMsg }) {
+export async function updateRecord ({ table, id, record, getByIdFn, notFoundMsg, tracking = false, userId = null }) {
+    if (tracking && userId) {
+        record.lastUpdateUserId = userId;
+        record.updatedAt = new Date();
+    }
     const [rows] = await pool.query(`UPDATE ${table} SET ? WHERE id = ?`, [record, id]);
     if (rows.affectedRows !== 1) throw dbErrorMsg(404, notFoundMsg);
     return await getByIdFn(id);

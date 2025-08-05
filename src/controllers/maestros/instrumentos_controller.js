@@ -36,7 +36,7 @@ export default class InstrumentosController {
             const [errores, bodyData] = bodyValidations(req.body, instrumentosCreateSchema);
             if (errores.length !== 0) throwValidationError(errores);
 
-            const insertado = await InstrumentosService.create(bodyData);
+            const insertado = await InstrumentosService.create(bodyData, req.user?.id);
             res.status(200).json(insertado.toJson());
         } catch (error) {
             showError(req, res, error);
@@ -46,7 +46,7 @@ export default class InstrumentosController {
     static async update (req, res, next) {
         try {
             const id = req.params.id;
-            const [errores, bodyData] = bodyValidations(req.body, instrumentosUpdateSchema);
+            const [errores, bodyData] = bodyValidations(req.body, instrumentosUpdateSchema, req.user?.id);
             if (errores.length !== 0) throwValidationError(errores);
 
             const muestrasActualizado = await InstrumentosService.update(id, bodyData);

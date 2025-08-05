@@ -16,6 +16,7 @@ const allowedFields = {
 };
 const noExiste = 'El instrumento no existe';
 const yaExiste = 'El instrumento ya existe';
+const tracking = true; // Activar tracking para esta entidad
 
 export default class InstrumentosService {
     static getAllowedFields () {
@@ -30,12 +31,12 @@ export default class InstrumentosService {
         return await getByIdWithJoins({ id, selectBase, fromClause, Model: Instrumento, notFoundMsg: noExiste });
     }
 
-    static async create (recordToAdd) {
-        return await createRecord({ table, record: recordToAdd, Model: Instrumento, conflictMsg: yaExiste });
+    static async create (recordToAdd, userId) {
+        return await createRecord({ table, record: recordToAdd, Model: Instrumento, conflictMsg: yaExiste, tracking, userId });
     }
 
-    static async update (id, record) {
-        return await updateRecord({ table, id, record, getByIdFn: this.getById, notFoundMsg: noExiste });
+    static async update (id, record, userId) {
+        return await updateRecord({ table, id, record, getByIdFn: this.getById, notFoundMsg: noExiste, tracking, userId });
     }
 
     static async delete (id) {

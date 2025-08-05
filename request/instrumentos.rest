@@ -43,9 +43,9 @@ Content-Type: application/json
 
 {
   "tipoInstrumentoId": 1,
-  "emisorId": 2,
-  "ticker": "SS390",
-  "notas": ""
+  "emisorId": 1,
+  "ticker": "AL30",
+  "notas": "Bono del tesoro"
 }
 
 ### Create

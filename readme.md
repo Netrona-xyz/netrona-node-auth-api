@@ -27,20 +27,23 @@ Este repositorio es una plantilla base para construir backends modernos en Node.
 - bcrypt
 - cookie-parser
 - mysql2
+- cors
 - zod
 - winston
 
 ## 🧱 Estructura del proyecto
 
 ```
-controllers/
-services/
-models/
-schemas/
-routers/
-middleware/
+src/
+   routers/
+   controllers/
+   services/
+   models/
+   schemas/
+   middleware/
 scaffold/         <-- generador de CRUDs
-output/           <-- archivos generados
+sql/              <-- script tablas requeridas + manejo de migraciones
+request/          <-- archivos .rest para probar las apis con rest-client
 ```
 
 ## 🗄️ Base de Datos

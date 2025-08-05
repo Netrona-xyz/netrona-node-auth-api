@@ -70,7 +70,7 @@ async function aplicarMigraciones () {
         }
 
         if (pendientes.length === 0) {
-            console.log('✓ No hay migraciones pendientes');
+            console.log(`✓ No hay migraciones pendientes en ${MIGRACIONES_DIR}`);
         }
     } catch (error) {
         console.error('✗ Error general:', error.message);
