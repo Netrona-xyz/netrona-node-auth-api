@@ -19,11 +19,7 @@ export function requiereDerecho (derechoClave) {
             if (!userId) return res.status(401).json({ message: 'Usuario no autenticado' });
 
             const { derechos } = await UsuariosService.getRolesYDerechos(userId);
-
             const tienePermiso = derechos.some(d => d.clave === derechoClave);
-            console.log('tienePermiso: ', tienePermiso, derechoClave);
-            console.log('derechos: ', derechos);
-
             if (!tienePermiso) {
                 return res.status(403).json({ message: `Acceso denegado: requiere derecho "${derechoClave}"` });
             }

@@ -54,6 +54,7 @@ const fromClause = '${fromClause}';
 const allowedFields = ${allowedFieldsCode};
 const noExiste = 'El ${entidad} no existe';
 const yaExiste = 'El ${entidad} ya existe';
+const tracking = true; // Activar tracking para esta entidad
 
 export default class ${plural}Service {
     static getAllowedFields () {
@@ -68,12 +69,12 @@ export default class ${plural}Service {
         return await getByIdWithJoins({ id, selectBase, fromClause, Model: ${entidad}, notFoundMsg: noExiste });
     }
 
-    static async create (recordToAdd) {
-        return await createRecord({ table, record: recordToAdd, Model: ${entidad}, conflictMsg: yaExiste });
+    static async create (recordToAdd, userId) {
+        return await createRecord({ table, record: recordToAdd, Model: ${entidad}, conflictMsg: yaExiste, tracking, userId });
     }
 
-    static async update (id, record) {
-        return await updateRecord({ table, id, record, getByIdFn: this.getById, notFoundMsg: noExiste });
+    static async update (id, record, userId) {
+        return await updateRecord({ table, id, record, getByIdFn: this.getById, notFoundMsg: noExiste, tracking, userId });
     }
 
     static async delete (id) {

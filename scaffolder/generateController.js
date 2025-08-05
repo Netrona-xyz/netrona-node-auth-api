@@ -42,7 +42,7 @@ export default class ${plural}Controller {
         try {
             const [errores, data] = bodyValidations(req.body, ${pluralLower}CreateSchema);
             if (errores.length) throwValidationError(errores);
-            const creado = await ${plural}Service.create(data);
+            const creado = await ${plural}Service.create(data, req.user?.id);
             res.status(200).json(creado.toJson());
         } catch (error) {
             showError(req, res, error);
@@ -52,7 +52,7 @@ export default class ${plural}Controller {
     static async update (req, res) {
         try {
             const { id } = req.params;
-            const [errores, data] = bodyValidations(req.body, ${pluralLower}UpdateSchema);
+            const [errores, data] = bodyValidations(req.body, ${pluralLower}UpdateSchema, req.user?.id);
             if (errores.length) throwValidationError(errores);
             const actualizado = await ${plural}Service.update(id, data);
             res.status(200).json(actualizado.toJson());
