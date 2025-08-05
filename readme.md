@@ -1,5 +1,9 @@
 # Backend Boilerplate: Express + Auth + CRUD + Scaffolder
 
+![Node.js](https://img.shields.io/badge/Node.js-%3E=18.x-green?logo=node.js)![License](https://img.shields.io/badge/license-MIT-blue.svg)![Last Commit](https://img.shields.io/github/last-commit/Netrona-xyz/netrona-node-auth-api)![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-yellow?logo=javascript)
+
+Netrona-xyz/netrona-node-auth-api
+
 Este repositorio es una plantilla base para construir backends modernos en Node.js con Express. Incluye autenticación JWT segura, estructura limpia para CRUDs, validaciones con Zod y un sistema de scaffolding para generar automáticamente controladores, servicios, esquemas, modelos y rutas.
 
 ---
@@ -13,7 +17,6 @@ Este repositorio es una plantilla base para construir backends modernos en Node.
 - 🧪 Validaciones Zod y esquema de fechas custom con `dateSchema`.
 - ⚒️ Sistema de scaffolding para generar entidades CRUD completas.
 - 🧩 CRUD de ejemplo para `Instrumentos` (maestro).
-- 📁 Proyecto listo para convertirse en plantilla de GitHub.
 
 ---
 
@@ -38,6 +41,59 @@ routers/
 middleware/
 scaffold/         <-- generador de CRUDs
 output/           <-- archivos generados
+```
+
+## 🗄️ Base de Datos
+
+Este template incluye scripts SQL mínimos necesarios para operar correctamente, separados en dos archivos clave dentro de la carpeta `/sql/inicial`.
+
+### 📂 Archivos incluidos
+
+#### 1. `BackTemplate-DBStruct.sql`
+
+Contiene la creación de las siguientes **tablas base requeridas**:
+
+| Tabla                  | Descripción breve                                                    |
+| ---------------------- | -------------------------------------------------------------------- |
+| `Usuarios`             | Gestión de cuentas de usuario (mail, password, refresh token, etc.)  |
+| `Roles`                | Definición de roles del sistema (ej. Admin, Viewer, etc.)            |
+| `Derechos`             | Lista jerárquica de derechos o permisos disponibles en el sistema    |
+| `DerechosRoles`        | Asociación de derechos a roles                                       |
+| `RolesUsuarios`        | Asociación de usuarios a uno o más roles                             |
+| `MigracionesAplicadas` | Registro interno de migraciones SQL ya aplicadas                     |
+| `Emisores`             | Entidad del dominio de ejemplo: emisores de instrumentos financieros |
+| `TiposInstrumentos`    | Tipos disponibles (bono, acción, etc.)                               |
+| `Instrumentos`         | Instrumentos financieros disponibles (con ticker, emisor, etc.)      |
+| `Operaciones`          | Registro de operaciones realizadas sobre instrumentos                |
+
+Estas tablas permiten construir una base funcional que incluya autenticación, autorización y una estructura de dominio básica.
+
+---
+
+#### 2. `BackTemplate-TestMinData.sql`
+
+Carga inicial de datos mínimos de prueba:
+
+- Un usuario administrador y/o tester
+- Roles básicos y sus derechos asociados
+- Algunos emisores, tipos e instrumentos de prueba
+
+> ⚠️ **Este archivo es solo para entornos de desarrollo o testing.**  
+> No debe ejecutarse en entornos de producción.
+
+---
+
+### ⚙️ Aplicar migraciones: `aplicarMigraciones.js`
+
+Script Node.js para aplicar de forma automática los archivos SQL de migración ubicados en `/sql/migraciones`.
+
+- Registra en la tabla `MigracionesAplicadas` los archivos ejecutados.
+- Solo se aplican migraciones que aún no estén registradas.
+
+#### 📌 Uso
+
+```bash
+node sql/migraciones/aplicarMigraciones.js
 ```
 
 ---
@@ -125,6 +181,14 @@ Las rutas protegidas utilizan el middleware `authMiddleware`, que verifica la va
 
 ---
 
+### 🔐 Variables de entorno
+
+Este proyecto incluye un archivo `.envExample` con todas las variables necesarias.
+
+➡️ Copiar y renombrar a `.env` antes de ejecutar.
+
+---
+
 ## 🚀 Comenzar
 
 1. Cloná el repo y corré `npm install`.
@@ -136,5 +200,10 @@ Las rutas protegidas utilizan el middleware `authMiddleware`, que verifica la va
 ## ✍️ Autor
 
 [Pablo Berdasco](https://github.com/pberdasco)
+[Netrona.xyz]
 
 ---
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo los términos de la [MIT License](LICENSE).
