@@ -17,6 +17,7 @@ Este repositorio es una plantilla base para construir backends modernos en Node.
 - 🧪 Validaciones Zod y esquema de fechas custom con `dateSchema`.
 - ⚒️ Sistema de scaffolding para generar entidades CRUD completas.
 - 🧩 CRUD de ejemplo para `Instrumentos` (maestro).
+- 🧪 Testing automatizado con Vitest + Supertest, con generación dinámica de casos CRUD vía scaffolding.
 
 ---
 
@@ -31,6 +32,11 @@ Este repositorio es una plantilla base para construir backends modernos en Node.
 - zod
 - winston
 
+**Dependencias de desarrollo:**
+
+- Vitest
+- Supertest
+
 ## 🧱 Estructura del proyecto
 
 ```
@@ -41,6 +47,7 @@ src/
    models/
    schemas/
    middleware/
+test/             <-- archivos .test.js
 scaffold/         <-- generador de CRUDs
 sql/              <-- script tablas requeridas + manejo de migraciones
 request/          <-- archivos .rest para probar las apis con rest-client
@@ -101,6 +108,51 @@ node sql/migraciones/aplicarMigraciones.js
 
 ---
 
+## 📋 Tests automáticos
+
+Este proyecto incluye soporte para **tests funcionales automatizados** usando [Vitest](https://vitest.dev) + [Supertest](https://github.com/ladjs/supertest).
+
+- Verifica comportamiento completo de endpoints CRUD generados.
+- Compatible con autenticación y autorización opcional (configurable por `.env`).
+- Permite generar archivos de test automáticamente por entidad (Incluído en el proceso de scaffolding del CRUD).
+
+### ⚙️ Scripts de test (`package.json`)
+
+```json
+"scripts": {
+  "test": "USE_AUTHENTICATION=false USE_AUTHORIZATION=false vitest run",
+  "test:auth": "vitest",
+  "test:auth-i": "vitest"
+}
+```
+
+- `npm test`: ejecuta los tests sin autenticación ni autorización (modo funcional puro).
+- `npm run test:auth`: ejecuta con seguridad activada según `.env`.
+- `npm run test:auth-i`: modo interactivo (útil para desarrollo).
+
+### ✨ Generación automática de tests
+
+Podés generar automáticamente un archivo `.test.js` para todas las entidades que se creen con scaffold.
+
+Incluido como uno de los pasos de:
+
+```bash
+node scaffold/generateCRUD.js xxx_entity_config.json
+```
+
+Esto crea un test funcional con:
+
+- Login automático (`test@fake.com`) si se requiere autenticación.
+- Creación, consulta, actualización y eliminación del recurso de prueba.
+- Validación dinámica del status (`201`, `200`, `204`, `403`) según la config.
+- Limpieza automática si ya existe un registro con el valor de prueba (`TEST001`, configurable).
+
+### ✅ Recomendación
+
+> Se recomienda ejecutar estos tests con `USE_AUTHORIZATION=false` durante el desarrollo, y validar permisos con tests de seguridad separados si fuera necesario.
+
+---
+
 ## ⚙️ Scaffolding
 
 Podés definir una entidad en JSON con esta forma:
@@ -142,6 +194,15 @@ Podés definir una entidad en JSON con esta forma:
     "create": "instrumentos.crear",
     "update": "instrumentos.modificar",
     "delete": "instrumentos.borrar"
+  },
+  "test": {
+    "campoUnico": "ticker",
+    "valorTest": "TEST001",
+    "payloadBase": {
+      "tipoInstrumentoId": 1,
+      "emisorId": 1,
+      "notas": "Test generado"
+    }
   }
 }
 ```
@@ -153,6 +214,7 @@ Desde ahí se genera:
 - `instrumentos_model.js`
 - `instrumentos_schema.js`
 - `instrumentos_router.js`
+- `instrumentos.test.js`
 
 Con uso correcto de nombres, joins, Zod y validaciones.
 
