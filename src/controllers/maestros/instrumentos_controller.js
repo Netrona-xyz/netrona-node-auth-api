@@ -37,7 +37,7 @@ export default class InstrumentosController {
             if (errores.length !== 0) throwValidationError(errores);
 
             const insertado = await InstrumentosService.create(bodyData, req.user?.id);
-            res.status(200).json(insertado.toJson());
+            res.status(201).json(insertado.toJson());
         } catch (error) {
             showError(req, res, error);
         }

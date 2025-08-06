@@ -43,7 +43,7 @@ export default class ${plural}Controller {
             const [errores, data] = bodyValidations(req.body, ${pluralLower}CreateSchema);
             if (errores.length) throwValidationError(errores);
             const creado = await ${plural}Service.create(data, req.user?.id);
-            res.status(200).json(creado.toJson());
+            res.status(201).json(creado.toJson());
         } catch (error) {
             showError(req, res, error);
         }

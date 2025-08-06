@@ -5,6 +5,7 @@ PORT=5050
 # Podés definir múltiples separados por coma (sin espacios).
 # Ejemplos: entorno dev y producción, apps distintas, etc.
 CORS_ORIGINS=http://localhost:5173,https://admin.miempresa.com
+## default http://localhost:5500npx
 
 # JWT
 # Usar al menos 64 caracteres aleatorios. Evitar contraseñas predecibles.
@@ -24,8 +25,11 @@ DEBUG_TO_CONSOLE=true
 LOGGER_MIN_LEVEL=debug
 
 # Autenticación
-# Si SKIP_AUTH=true, se omite la validación de token (útil en desarrollo)
-SKIP_AUTH=true
+# Si USE_AUTHENTICATION=false, se omite la validación de token (útil en desarrollo/test)
+#                       en ese caso asume un usuario { id: 1000, nombre: 'test', mail: 'test@fake.com' }
+USE_AUTHENTICATION=true
 
-# Si USE_AUTHORIZATION=false, se omite el chequeo de roles/permisos
+# Autorización (acceso por endpoint)
+# Si USE_AUTHORIZATION=false, se omite el chequeo de roles/permisos.
+# Si USE_AUTHENTICATION=false => y se quiere probar autorizacion: ver que en la base este registrado un usuario 1000 con los derechos que se deseen
 USE_AUTHORIZATION=true

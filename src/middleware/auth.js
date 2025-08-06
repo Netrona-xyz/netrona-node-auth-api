@@ -2,8 +2,8 @@
 import JWT from './jwt_handle.js';
 
 export function authMiddleware (req, res, next) {
-    if (process.env.SKIP_AUTH === 'true') {
-        req.user = { id: 1, nombre: 'dev', mail: 'dev@fake.com' };
+    if (process.env.USE_AUTHENTICATION === 'false') {
+        req.user = { id: 1000, nombre: 'test', mail: 'test@fake.com' };
         return next();
     }
     let token = req.cookies?.accessToken;

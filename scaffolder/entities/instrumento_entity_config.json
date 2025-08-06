@@ -39,5 +39,14 @@
     "create": "instrumentos.crear",
     "update": "instrumentos.modificar",
     "delete": "instrumentos.borrar"
+  },
+  "test": {
+    "campoUnico": "ticker",
+    "valorTest": "TEST001",
+    "payloadBase": {
+      "tipoInstrumentoId": 1,
+      "emisorId": 1,
+      "notas": "Test generado"
+    }
   }
 }

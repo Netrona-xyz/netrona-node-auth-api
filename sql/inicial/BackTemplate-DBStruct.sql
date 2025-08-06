@@ -114,33 +114,6 @@ CREATE TABLE `MigracionesAplicadas` (
 
 
 --
--- Table structure for table `Operaciones`
---
-
-DROP TABLE IF EXISTS `Operaciones`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Operaciones` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tipo` int NOT NULL,
-  `fecha` datetime NOT NULL,
-  `monedaId` int NOT NULL,
-  `Importe` decimal(12,2) NOT NULL,
-  `instrumentoId` int DEFAULT NULL,
-  `cantidad` decimal(12,4) DEFAULT NULL,
-  `valorNominal` decimal(12,2) DEFAULT NULL,
-  `costoMonedaOp` decimal(12,2) DEFAULT NULL,
-  `costoMonedaPrinc` decimal(12,2) DEFAULT NULL,
-  `referencia` varchar(20) DEFAULT NULL,
-  `estadoId` int NOT NULL,
-  `OrigenId` int NOT NULL,
-  `Comentarios` varchar(150) DEFAULT NULL,
-  `Operacionescol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `Roles`
 --
 

@@ -15,14 +15,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Dumping data for table `CotizacionesMoneda`
---
-
-LOCK TABLES `CotizacionesMoneda` WRITE;
-/*!40000 ALTER TABLE `CotizacionesMoneda` DISABLE KEYS */;
-/*!40000 ALTER TABLE `CotizacionesMoneda` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping data for table `Derechos`
@@ -73,23 +65,6 @@ LOCK TABLES `MigracionesAplicadas` WRITE;
 /*!40000 ALTER TABLE `MigracionesAplicadas` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Dumping data for table `Monedas`
---
-
-LOCK TABLES `Monedas` WRITE;
-/*!40000 ALTER TABLE `Monedas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Monedas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `Operaciones`
---
-
-LOCK TABLES `Operaciones` WRITE;
-/*!40000 ALTER TABLE `Operaciones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Operaciones` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping data for table `Roles`
@@ -107,7 +82,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `RolesUsuarios` WRITE;
 /*!40000 ALTER TABLE `RolesUsuarios` DISABLE KEYS */;
-INSERT INTO `RolesUsuarios` VALUES (1,1,1),(2,2,2),(3,2,3);
+INSERT INTO `RolesUsuarios` VALUES (1,1000,1),(2,1001,2),(3,1001,3);
 /*!40000 ALTER TABLE `RolesUsuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +102,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `Usuarios` WRITE;
 /*!40000 ALTER TABLE `Usuarios` DISABLE KEYS */;
-INSERT INTO `Usuarios` VALUES (1,'p.berdasco@gmail.com','Pablo Berdasco','$2b$08$acec14fHaCXFeG.muIn65.zxU.99VANjCe64EM8W3hCUnFG.vW196',NULL),(2,'jf@gmail.com','Juan Fernandez','$2b$08$lSniSIyifAYjsNVT/PwxoOEg0/K.8eo9IkTQccmGN8k3y4zX6t16.',NULL),(12,'epuma@netrona.xyz','Enzo Puma','$2b$08$V4XPvjrGdYKyGlOhUYNNA.acWN6YmyPuuZoHSjA85tkHKK6WWEKwa',NULL);
+INSERT INTO `Usuarios` VALUES (1000,'test@fake.com','Mr Fake Test','$2b$08$acec14fHaCXFeG.muIn65.zxU.99VANjCe64EM8W3hCUnFG.vW196',NULL),(1001,'jftd@gmail.com','Juan Fernandez Test Delete','$2b$08$lSniSIyifAYjsNVT/PwxoOEg0/K.8eo9IkTQccmGN8k3y4zX6t16.',NULL);
 /*!40000 ALTER TABLE `Usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

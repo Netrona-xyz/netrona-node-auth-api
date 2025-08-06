@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export function generateRouter (config, outputDir) {
+export async function generateRouter (config, outputDir) {
     const { plural, grupo, derechos = {} } = config;
 
     const pluralLower = plural[0].toLowerCase() + plural.slice(1);

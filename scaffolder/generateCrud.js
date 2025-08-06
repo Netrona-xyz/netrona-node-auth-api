@@ -7,6 +7,7 @@ import { generateService } from './generateService.js';
 import { generateController } from './generateController.js';
 import { generateSchema } from './generateSchema.js';
 import { generateRouter } from './generateRouter.js';
+import { generateTest } from './generateTest.js';
 
 const entitiesDir = './scaffolder/entities/';
 const outputDir = './scaffolder/output';
@@ -39,6 +40,7 @@ async function main () {
     await generateController(config, outputDir);
     await generateSchema(config, outputDir);
     await generateRouter(config, outputDir);
+    await generateTest(config, outputDir);
 }
 
 main();

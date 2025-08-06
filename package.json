@@ -7,14 +7,20 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch src/server.js",
+    "test:auth-i": "vitest",
+    "test": "cross-env USE_AUTHENTICATION=false USE_AUTHORIZATION=false vitest run",
+    "test-i": "cross-env USE_AUTHENTICATION=false USE_AUTHORIZATION=false vitest"
   },
   "esLintConfig": {
     "extends": "semistandard"
   },
   "devDependencies": {
+    "cross-env": "^10.0.0",
     "eslint": "^8.57.1",
-    "semistandard": "^17.0.0"
+    "semistandard": "^17.0.0",
+    "supertest": "^7.1.4",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
