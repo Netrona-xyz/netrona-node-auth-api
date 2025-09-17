@@ -1,105 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Probar login + ABM</title>
+    <link rel="icon" type="image/png" href="logo192.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
   <body>
-    <h2>Probar login</h2>
-    <form id="loginForm">
-      <input type="email" name="mail" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
+    <header class="header">
+      <img src="logo192.png" alt="logo" />
+      <h1>Demo de autenticación &amp; ABM <span class="badge">cookies</span></h1>
+    </header>
 
-    <button id="btnMe" disabled>Obtener roles y derechos</button>
-    <button id="btnRefresh" disabled>Renovar token</button>
-    <button id="btnLogout" disabled>Logout</button>
-    <pre id="me"></pre>
+    <main class="container">
+      <section class="card">
+        <h2>Probar login</h2>
+        <form id="loginForm" class="row" autocomplete="on">
+          <div class="col">
+            <input type="email" name="mail" placeholder="Email" required />
+          </div>
+          <div class="col">
+            <input type="password" name="password" placeholder="Password" required />
+          </div>
+          <div class="col" style="max-width:160px">
+            <button type="submit">Login</button>
+          </div>
+        </form>
+        <div class="actions" style="margin-top:10px">
+          <button id="btnMe" type="button" disabled>Obtener roles y derechos</button>
+          <button id="btnRefresh" type="button" disabled>Renovar token</button>
+          <button id="btnLogout" class="muted" type="button" disabled>Logout</button>
+          <button id="btnABM" class="secondary" type="button" disabled>Abrir ABM Instrumentos</button>
+        </div>
+        <hr />
+        <pre id="me">Esperando login…</pre>
+      </section>
 
-    <script>
-      const form = document.getElementById("loginForm");
-      const btnMe = document.getElementById("btnMe");
-      const btnRefresh = document.getElementById("btnRefresh");
-      const btnLogout = document.getElementById("btnLogout");
-      const pre = document.getElementById("me");
+      <section id="abmInstrumentos" class="card" hidden>
+        <h2>Instrumentos <span class="badge">ABM</span></h2>
+        <div class="actions" style="margin:8px 0 12px">
+          <button id="btnNuevo" class="ghost" type="button">Nuevo</button>
+          <button onclick="loadInstrumentos()" type="button">Recargar</button>
+        </div>
 
-      function setSesionActiva(activa) {
-        btnMe.disabled = !activa;
-        btnRefresh.disabled = !activa;
-        btnLogout.disabled = !activa;
-        if (!activa) {
-          pre.textContent = "Sesión cerrada.";
-        }
-      }
+        <table id="tblInstrumentos" class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ticker</th>
+              <th>Notas</th>
+              <th>Tipo</th>
+              <th>Emisor</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const data = {
-          mail: form.mail.value,
-          password: form.password.value,
-        };
+        <hr />
 
-        const loginRes = await fetch("http://localhost:5050/api/usuarios/login", {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        <form id="formInstrumento" class="row">
+          <input type="hidden" name="id" />
+          <div class="col">
+            <label>Ticker</label>
+            <input name="ticker" placeholder="Ej. MXI33" required />
+          </div>
+          <div class="col">
+            <label>Notas</label>
+            <input name="notas" placeholder="Notas" />
+          </div>
+          <div class="col">
+            <label>Tipo Instrumento ID</label>
+            <input name="tipoInstrumentoId" type="number" min="1" step="1" placeholder="3" />
+          </div>
+          <div class="col">
+            <label>Emisor ID</label>
+            <input name="emisorId" type="number" min="1" step="1" placeholder="2" />
+          </div>
+          <div class="col" style="max-width:180px; align-self:end">
+            <div class="actions">
+              <button type="submit">Guardar</button>
+              <button id="btnCancelar" type="button" class="ghost">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
 
-        if (loginRes.ok) {
-          setSesionActiva(true);
-          pre.textContent = "Login exitoso. Ahora podés obtener roles y derechos.";
-        } else {
-          setSesionActiva(false);
-          const err = await loginRes.json();
-          pre.textContent = "Login falló: " + (err?.message || loginRes.status);
-        }
-      });
+    <footer>© Netrona - Demo Template Backend</footer>
 
-      btnMe.addEventListener("click", async () => {
-        const res = await fetch("http://localhost:5050/api/usuarios/me", {
-          credentials: "include",
-        });
-
-        if (res.ok) {
-          const json = await res.json();
-          pre.textContent = "/me = \n" + JSON.stringify(json, null, 2);
-        } else {
-          const err = await res.json();
-          pre.textContent = "Error al obtener /me: " + (err?.message || res.status);
-        }
-      });
-
-      btnRefresh.addEventListener("click", async () => {
-        const res = await fetch("http://localhost:5050/api/usuarios/refresh", {
-          method: "POST",
-          credentials: "include",
-        });
-
-        if (res.ok) {
-          pre.textContent = "Token renovado correctamente.";
-        } else {
-          const err = await res.json();
-          setSesionActiva(false);
-          pre.textContent = "Error al renovar token: " + (err?.message || res.status);
-        }
-      });
-
-      btnLogout.addEventListener("click", async () => {
-        const res = await fetch("http://localhost:5050/api/usuarios/logout", {
-          method: "POST",
-          credentials: "include",
-        });
-
-        if (res.ok) {
-          setSesionActiva(false);
-          pre.textContent = "Sesión cerrada exitosamente.";
-        } else {
-          const err = await res.json();
-          pre.textContent = "Error al cerrar sesión: " + (err?.message || res.status);
-        }
-      });
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
-
-
